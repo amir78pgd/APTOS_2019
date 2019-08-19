@@ -1,0 +1,25 @@
+h1, h2, h3, h4, p {
+  color: #ffffff;
+}
+
+body {
+    padding-left: 20px;
+    font-family: 'Arial,Helvetica,sans-serif';
+}
+
+.page-header {
+    background-color: #4AB7B1;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1{
+    font-size: 36pt;
+    text-decoration: none;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

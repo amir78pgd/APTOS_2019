@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <meta charset="utf-8">
+  <title>Diabetes Retinopathy Recognition</title>
+  
+  <script>
+    var loadFile = function (event) {
+    var image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+    };
+  </script>
+  </head>
+  
+  <body>
+    <h1>Welcome to Diabetes Retinopathy Recognition App</h1>
+
+    
+    <form action="{% url "prediction" %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    
+          <input type="file" name="myfile" accept="image/*" onchange="loadFile(event)">
+          <button type="submit">Predict</button>
+
+          <p><img id="output" width="200" /></p>
+                  
+              
+    </form>
+     
+    
+     {% block content %}
+    <h3>Prediction: {{ Condition }}</h3>
+    
+      {% for table in tables %}
+      {{ table|safe }}
+      {% endfor %}
+        
+    {% endblock %}
+
+  </body>
+</html>
