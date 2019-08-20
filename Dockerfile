@@ -23,5 +23,5 @@ WORKDIR /manage.py
 
 COPY . /manage.py
 RUN chmod +x /manage.py
-ENTRYPOINT [ "/opt/venv/bin/python3" ]
+ENTRYPOINT [ "/opt/venv1/bin/python3" ]
 CMD [ "python3", "manage.py runserver 0.0.0.0:8000" ]
