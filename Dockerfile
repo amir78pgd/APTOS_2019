@@ -19,9 +19,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Open Ports for Web App
 EXPOSE 8000
 
-WORKDIR /manage.py
+#Setup File System
+RUN mkdir ds
+ENV HOME=/ds
+ENV SHELL=/bin/bash
+VOLUME /ds
+WORKDIR /ds
+ADD manage.py /ds/manage.py
+RUN chmod +x /ds/manage.py
 
-COPY . /manage.py
-RUN chmod +x /manage.py
-ENTRYPOINT [ "/opt/venv1/bin/python3" ]
-CMD [ "python3", "manage.py runserver 0.0.0.0:8000" ]
+# Run a shell script
+CMD  python3 /ds/manage.py runserver 0.0.0.0:8000
