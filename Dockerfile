@@ -22,5 +22,6 @@ EXPOSE 8000
 WORKDIR /manage.py
 
 COPY . /manage.py
+RUN chmod +x /manage.py
 ENTRYPOINT [ "python3" ]
 CMD [ "python3", "manage.py runserver 0.0.0.0:8000" ]
