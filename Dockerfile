@@ -29,6 +29,6 @@ ADD manage.py /ds/manage.py
 RUN chmod +x /ds/manage.py
 #RUN . /opt/venv/bin/activate
 #ENTRYPOINT ["/bin/bash"]
-ENTRYPOINT python3 manage.py runserver
+ENTRYPOINT python3 /ds/manage.py runserver
 # Run a shell script
 CMD  python3 /ds/manage.py runserver 0.0.0.0:8000
