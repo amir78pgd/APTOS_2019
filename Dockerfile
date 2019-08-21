@@ -1,5 +1,5 @@
 # Set the base image to use to Ubuntu
-FROM ubuntu:14.04
+FROM ubuntu:18.04
 # Set the file maintainer (your name - the file's author)
 MAINTAINER Amir Ashraff
 # Set env variables used in this Dockerfile (add a unique prefix, such as DOCKYARD)
