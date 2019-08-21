@@ -31,4 +31,4 @@ RUN chmod +x /ds/manage.py
 #ENTRYPOINT ["/bin/bash"]
 ENTRYPOINT ["python3 manage.py runserver"]
 # Run a shell script
-CMD  ["python3", "manage.py", "runserver 0.0.0.0:8000"]
+CMD  python3 /ds/manage.py runserver 0.0.0.0:8000
