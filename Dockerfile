@@ -27,7 +27,7 @@ VOLUME /ds
 WORKDIR /ds
 ADD manage.py /ds/manage.py
 RUN chmod +x /ds/manage.py
+RUN . /opt/venv/bin/activate
 ENTRYPOINT ["/bin/bash"]
 # Run a shell script
-CMD . /opt/venv/bin/activate && exec python3 manage.py runserver 0.0.0.0:8000
-#CMD  ["python3", "manage.py", "runserver 0.0.0.0:8000"]
+CMD  ["python3", "manage.py", "runserver 0.0.0.0:8000"]
