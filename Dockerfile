@@ -28,7 +28,11 @@ RUN apt-get install -y nginx
 #COPY $DOCKYARD_SRC $DOCKYARD_SRVPROJ
 # Install Python dependencies
 #RUN pip install -r $DOCKYARD_SRVPROJ/requirement.txt
-RUN pip install -r requirements.txt
+#RUN pip install -r requirements.txt
+# Copying requirements.txt file
+COPY ./requirements.txt /requirements.txt
+# pip install
+RUN pip install --no-cache -r /requirements.txt
 # Port to expose
 EXPOSE 8000
 # Copy entrypoint script into the image
