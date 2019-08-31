@@ -34,7 +34,7 @@ COPY ./requirements.txt /requirements.txt
 # pip install
 RUN pip install --no-cache -r /requirements.txt
 # Port to expose
-EXPOSE 8081
+EXPOSE 8000
 # Copy entrypoint script into the image
 #WORKDIR $DOCKYARD_SRVPROJ
 COPY ./docker-entrypoint.sh /
