@@ -1,19 +1,15 @@
-#!/bin/bash
-python manage.py migrate        # Apply database migrations
-python manage.py collectstatic --clear --noinput # clearstatic files
-python manage.py collectstatic --noinput  # collect static files
-# Prepare log files and start outputting logs to stdout
-touch /srv/logs/gunicorn.log
-touch /srv/logs/access.log
-tail -n 0 -f /srv/logs/*.log &
-echo Starting nginx 
-# Start Gunicorn processes
-echo Starting Gunicorn.
-exec gunicorn cv_django_merchandising.wsgi:application \
-    --name cv_django_merchandising \
-    --bind unix:diabetes_retinopathy_recognition_app.sock \
-    --workers 3 \
-    --log-level=info \
-    --log-file=/srv/logs/gunicorn.log \
-    --access-logfile=/srv/logs/access.log & 
-exec service nginx start
+#!/bin/sh
+set -e
+
+until psql $DATABASE_URL -c '\l'; do
+    >&2 echo "Postgres is unavailable - sleeping"
+    sleep 1
+done
+
+>&2 echo "Postgres is up - continuing"
+
+if [ "x$DJANGO_MANAGEPY_MIGRATE" = 'xon' ]; then
+    /venv/bin/python manage.py migrate --noinput
+fi
+
+exec "$@"
