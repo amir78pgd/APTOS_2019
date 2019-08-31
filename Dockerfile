@@ -67,7 +67,7 @@ ENV UWSGI_WORKERS=2 UWSGI_THREADS=4
 # ENV UWSGI_ROUTE_HOST="^(?!localhost:8000$) break:400"
 
 # Uncomment after creating your docker-entrypoint.sh
-# ENTRYPOINT ["/code/docker-entrypoint.sh"]
+ENTRYPOINT ["/code/docker-entrypoint.sh"]
 
 # Start uWSGI
 CMD ["/venv/bin/uwsgi", "--show-config"]
